@@ -12,6 +12,7 @@ import io.cucumber.java.Scenario;
 import pages.BasePage;
 
 public class Helper extends BasePage{	
+	
 	@Before
 	public static void initialSetup() {
 		System.out.println("************* STARTING NEW TEST **************");

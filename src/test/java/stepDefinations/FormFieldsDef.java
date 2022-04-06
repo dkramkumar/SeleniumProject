@@ -5,10 +5,13 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import pages.BasePage;
 import pages.FormFieldsPage;
+
+import java.io.IOException;
+
 import org.junit.Assert; 
 
 public class FormFieldsDef extends BasePage{
-	
+
 	@Given("User is on sandbox web site")
 	public void user_is_on_sandbox_web_site() throws InterruptedException {
 		initialSetUp();
@@ -38,19 +41,19 @@ public class FormFieldsDef extends BasePage{
 		FormFieldsPage.scrollDownToDropDownMenu();
 		Thread.sleep(1000);
 	}
-	
+
 	@When("User scroll down to submit button")
 	public void user_scroll_down_to_submit_button() throws InterruptedException {
 		FormFieldsPage.scrollDownToSubmitButton();
 		Thread.sleep(1000);
 	}
-	
+
 	@When("User scroll down to radio button")
 	public void user_scroll_down_to_radio_button() throws InterruptedException {
 		FormFieldsPage.scrollDownToRadioButton();
 		Thread.sleep(1000);
 	}
-	
+
 	@When("User enters {string} as email id")
 	public void user_enters_as_email_id(String string) throws InterruptedException {
 		FormFieldsPage.setEmail(string);
@@ -91,5 +94,19 @@ public class FormFieldsDef extends BasePage{
 	public void user_verifies_contact_form_submission_message() {
 		Assert.assertTrue(FormFieldsPage.isContactSubmissionMessagePresent());
 	}
+	
+	@When("User pass the Input field from excel sheet")
+	public void user_pass_the_input_field_from_excel_sheet() throws IOException {
+		FormFieldsPage.getInputFieldFromExcel();
+	}
+	
+	@When("User pass the email and Input box from excel sheet")
+	public void user_pass_the_email_and_input_box_from_excel_sheet() throws IOException {
+		FormFieldsPage.getEmailAndTextBoxFromExcel();
+	}
+	
+	@When("User pass the form data from excel sheet")
+	public void user_pass_the_form_data_from_excel_sheet() {
 
+	}
 }

@@ -1,6 +1,13 @@
 package pages;
 
+import java.awt.Robot;
+import java.awt.Toolkit;
+import java.awt.datatransfer.StringSelection;
+import java.awt.event.KeyEvent;
 import java.security.SecureRandom;
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
@@ -8,6 +15,7 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
@@ -16,10 +24,27 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
 	
 	public static WebDriver driver;
+	public static String downloadpath;
 	
 	public static void initialSetUp() {
 		System.setProperty("webdriver.chrome.driver", "D:\\WS Auto Testing\\SanboxProject\\Drivers\\chromedriver.exe");
-		driver = new ChromeDriver();
+		
+		 String fileDownloadPath = "D:\\WS Auto Testing\\SanboxProject\\Download";
+		  
+		  Map<String, Object> prefsMap = new HashMap<String, Object>();
+		  prefsMap.put("profile.default_content_settings.popups", 0);
+		  prefsMap.put("profile.default_content_setting_values.notifications", 2);
+		  prefsMap.put("cookie-law-info-bar", 0);
+		  prefsMap.put("download.default_directory", fileDownloadPath);
+		  
+		  ChromeOptions option = new ChromeOptions();
+		  option.setExperimentalOption("prefs", prefsMap);
+		  option.addArguments("--disable-infobars");
+		  option.addArguments("--test-type");
+		  option.addArguments("--disable-extensions");
+		  option.setExperimentalOption("excludeSwitches", Arrays.asList("enable-automation"));
+		
+		driver = new ChromeDriver(option);
 		driver.manage().window().maximize();
 	}
 	
@@ -52,6 +77,17 @@ public class BasePage {
 		try {
 			Actions act = new Actions(driver);
 			act.click(wEle).build().perform();
+			System.out.println("INFO: Element "+selector+ " is clicked");
+		} catch (Exception e) {
+			System.out.println("ERROR: Element is "+selector+" not clickable");
+		}
+	}
+	
+	public static void clickElement1(By ele, String selector) {
+		WebElement wEle = findObject(ele, selector);
+		try {
+			Actions act = new Actions(driver);
+			act.moveToElement(wEle).click().build().perform();
 			System.out.println("INFO: Element "+selector+ " is clicked");
 		} catch (Exception e) {
 			System.out.println("ERROR: Element is "+selector+" not clickable");
@@ -157,6 +193,17 @@ public class BasePage {
 		}
 	}
 	
+	public static void drag1(By ele, String selector) {
+		WebElement wEle = findObject(ele, selector);
+		try {
+			Actions act = new Actions(driver);
+			act.dragAndDropBy(wEle, 200, 100).build().perform();
+			System.out.println("INFO: Element "+selector+ " is dragged");
+		} catch (Exception e) {
+			System.out.println("ERROR: Element is not dragged");
+		}
+	}
+	
 	public static void curcurMovedToElement(By ele, String selector) {
 		WebElement wEle = findObject(ele, selector);
 		try {
@@ -191,16 +238,44 @@ public class BasePage {
 		}
 	}
 	
+public static void fileUpload(By ele, String selector, String Path) {
+		
+		try {
+			Robot robot = new Robot();
+			
+			//clickElement(ele, selector);
+			//robot.setAutoDelay(2000);
+			
+			StringSelection stringSelection = new StringSelection(Path);
+			Toolkit.getDefaultToolkit().getSystemClipboard().setContents(stringSelection, null);
+			
+			robot.setAutoDelay(1000);
+			robot.keyPress(KeyEvent.VK_CONTROL);
+			robot.keyPress(KeyEvent.VK_V);
+			
+			robot.keyRelease(KeyEvent.VK_CONTROL);
+			robot.keyRelease(KeyEvent.VK_V);
+			
+			robot.setAutoDelay(1000);
+			
+			robot.keyPress(KeyEvent.VK_ENTER);
+			robot.keyRelease(KeyEvent.VK_ENTER);
+			
+			System.out.println("File Uploaded sucessfully");
+			
+		} catch (Exception e) {
+			System.out.println("File failed to upload"  + selector);
+		}
+	}
+
+	
 	public static String getRandomString(int length) {
 		String ab = "abcdefghijklmnopqrstuvwxyz";
-		
 		SecureRandom sr = new SecureRandom();
 		StringBuffer sb = new StringBuffer(length);
-		
 		for(int i=0; i<length; i++) {
 			sb.append(ab.charAt(sr.nextInt(ab.length())));
 		}
 		return sb.toString();
 	}
-
 }

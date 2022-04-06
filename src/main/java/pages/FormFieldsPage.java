@@ -1,8 +1,13 @@
 package pages;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.IOException;
 import java.util.Iterator;
 import java.util.List;
-
+import org.apache.poi.xssf.usermodel.XSSFCell;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
@@ -72,12 +77,48 @@ public class FormFieldsPage extends BasePage{
 		setText(byInputBox, "Input Box", data);
 	}
 	
-	public static void clickOnSubmitButton() {
-		clickElement(bySubmit, "Submit");
+	public static void clickOnSubmitButton() throws InterruptedException {
+		clickElement(bySubmit, "Submit button");
 	}
 	
 	public static boolean isContactSubmissionMessagePresent() {
 		getText(byContactSubmissionMessage, "Submission Message");
 		return isElementPresent(byContactSubmissionMessage, "Submission Message");
 	}
+	
+	public static void getInputFieldFromExcel() throws IOException {
+		File file = new File("D:\\WS Auto Testing\\SanboxProject\\Files\\FormData.xlsx");
+		FileInputStream fis = new FileInputStream(file);
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+		XSSFSheet sheet = wb.getSheetAt(0);
+		XSSFCell cell = sheet.getRow(1).getCell(0);
+		setText(byInputField, "Input Field", cell.getStringCellValue());
+		wb.close();
+	}
+	
+	public static void getEmailAndTextBoxFromExcel() throws IOException {
+		File file = new File("D:\\WS Auto Testing\\SanboxProject\\Files\\FormData.xlsx");
+		FileInputStream fis = new FileInputStream(file);
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+		XSSFSheet sheet = wb.getSheetAt(0);
+		XSSFCell cell1 = sheet.getRow(1).getCell(1);
+		setText(byEmail, "Email", cell1.getStringCellValue());
+		XSSFCell cell2 = sheet.getRow(1).getCell(2);
+		setText(byInputBox, "Input Box", cell2.getStringCellValue());
+		wb.close();
+	}
+	
+	public static void getFormdataFromExcel() throws IOException {
+		
+		File file = new File("D:\\WS Auto Testing\\SanboxProject\\Files\\FormData.xlsx");
+		FileInputStream fis = new FileInputStream(file);
+		XSSFWorkbook wb = new XSSFWorkbook(fis);
+		XSSFSheet sheet = wb.getSheetAt(0);
+		XSSFCell cell1 = sheet.getRow(1).getCell(1);
+		setText(byEmail, "Email", cell1.getStringCellValue());
+		XSSFCell cell2 = sheet.getRow(1).getCell(2);
+		setText(byInputBox, "Input Box", cell2.getStringCellValue());
+		wb.close();
+	}
+
 }
