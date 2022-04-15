@@ -1,0 +1,156 @@
+[
+  {
+    "line": 2,
+    "elements": [
+      {
+        "start_timestamp": "2022-04-07T03:40:31.222Z",
+        "before": [
+          {
+            "result": {
+              "duration": 2000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "stepDefinations.Helper.initialSetup()"
+            }
+          }
+        ],
+        "line": 105,
+        "name": "File Download - Password Protected Download",
+        "description": "",
+        "id": "sandbox;file-download---password-protected-download",
+        "after": [
+          {
+            "result": {
+              "duration": 6000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "stepDefinations.Helper.takeScreenshot(io.cucumber.java.Scenario)"
+            }
+          },
+          {
+            "result": {
+              "duration": 714000000,
+              "status": "passed"
+            },
+            "match": {
+              "location": "stepDefinations.Helper.endSetUp()"
+            }
+          }
+        ],
+        "type": "scenario",
+        "keyword": "Scenario",
+        "steps": [
+          {
+            "result": {
+              "duration": 5793000000,
+              "status": "passed"
+            },
+            "line": 106,
+            "name": "User is on sandbox web site",
+            "match": {
+              "location": "stepDefinations.FormFieldsDef.user_is_on_sandbox_web_site()"
+            },
+            "keyword": "Given "
+          },
+          {
+            "result": {
+              "duration": 1052000000,
+              "status": "passed"
+            },
+            "line": 107,
+            "name": "User scroll to search boxes button",
+            "match": {
+              "location": "stepDefinations.SearchBoxesDef.user_scroll_to_search_boxes_button()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 4618000000,
+              "status": "passed"
+            },
+            "line": 108,
+            "name": "User clicks on \"File Download\" button",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"File Download\"",
+                  "offset": 15
+                }
+              ],
+              "location": "stepDefinations.FormFieldsDef.user_clicks_on_button(java.lang.String)"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 5186000000,
+              "status": "passed"
+            },
+            "line": 109,
+            "name": "User clicks on download button in Password Protected Download",
+            "match": {
+              "location": "stepDefinations.FileDownloadDef.user_clicks_on_download_button_in_password_protected_download()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 5549000000,
+              "status": "passed"
+            },
+            "line": 110,
+            "name": "User enters \"automateNow\" password",
+            "match": {
+              "arguments": [
+                {
+                  "val": "\"automateNow\"",
+                  "offset": 12
+                }
+              ],
+              "location": "stepDefinations.FileDownloadDef.user_enters_password(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 2000000,
+              "status": "passed"
+            },
+            "line": 111,
+            "name": "User verify the file is downloaded",
+            "match": {
+              "location": "stepDefinations.FileDownloadDef.user_verify_the_file_is_downloaded()"
+            },
+            "keyword": "Then "
+          }
+        ],
+        "tags": [
+          {
+            "name": "@Smoke"
+          },
+          {
+            "name": "@Download"
+          }
+        ]
+      }
+    ],
+    "name": "Sandbox",
+    "description": "",
+    "id": "sandbox",
+    "keyword": "Feature",
+    "uri": "file:src/test/resources/Features/Sandbox.feature",
+    "tags": [
+      {
+        "name": "@Smoke",
+        "type": "Tag",
+        "location": {
+          "line": 1,
+          "column": 1
+        }
+      }
+    ]
+  }
+]

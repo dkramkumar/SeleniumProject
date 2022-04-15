@@ -5,6 +5,7 @@ import java.awt.Robot;
 import java.awt.Toolkit;
 import java.awt.datatransfer.StringSelection;
 import java.awt.event.KeyEvent;
+import java.io.File;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -47,6 +48,21 @@ public class FileDownloadPage extends BasePage{
 		
 		robot.setAutoDelay(1000);
 		System.out.println("File Uploaded sucessfully");
+	}
 	
+	public static void verifyFileDownloadedOrNot() {
+		File file = null;
+		try {
+			file = new File(fileDownloadPath);
+			String filePath = file.getAbsolutePath();
+			
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		file.exists();
+		String fileName = file.getName();
+		System.out.println(" file path :" +file.getAbsolutePath());
+		System.out.println("File name :" +fileName);
 	}
 }

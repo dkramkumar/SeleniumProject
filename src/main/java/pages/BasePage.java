@@ -24,12 +24,10 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class BasePage {
 	
 	public static WebDriver driver;
-	public static String downloadpath;
+	public static String fileDownloadPath = "D:\\WS Auto Testing\\SanboxProject\\Download";
 	
 	public static void initialSetUp() {
 		System.setProperty("webdriver.chrome.driver", "D:\\WS Auto Testing\\SanboxProject\\Drivers\\chromedriver.exe");
-		
-		 String fileDownloadPath = "D:\\WS Auto Testing\\SanboxProject\\Download";
 		  
 		  Map<String, Object> prefsMap = new HashMap<String, Object>();
 		  prefsMap.put("profile.default_content_settings.popups", 0);

@@ -34,7 +34,7 @@ public class FileDownloadDef {
 	
 	@Then("User verify the file is downloaded")
 	public void user_verify_the_file_is_downloaded() {
-
+		FileDownloadPage.verifyFileDownloadedOrNot();
 	}
 
 

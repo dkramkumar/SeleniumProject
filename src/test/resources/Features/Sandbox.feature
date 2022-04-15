@@ -1,6 +1,6 @@
-@Smoke
-Feature: Sandbox
 
+Feature: Sandbox
+  @Smoke
   Scenario: FormFields
     Given User is on sandbox web site
     When User clicks on "Form Fields" button
@@ -101,7 +101,7 @@ Feature: Sandbox
     When User clicks on "File Download" button
     And User clicks on download button in normal download
     And User enters the path to download in window based popup
-
+  @Download
   Scenario: File Download - Password Protected Download
     Given User is on sandbox web site
     When User scroll to search boxes button
@@ -124,7 +124,7 @@ Feature: Sandbox
     And User clicks on "Replace Window" in window operations
     Then Verify that the window is replaced
 
-  Scenario: Windows Operations - Click Replace window
+  Scenario: Windows Operations - New window
     Given User is on sandbox web site
     When User scroll to search boxes button
     When User clicks on "Window Operations" button
