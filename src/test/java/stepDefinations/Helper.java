@@ -2,10 +2,11 @@ package stepDefinations;
 
 import java.io.File;
 import java.io.IOException;
-
 import org.apache.commons.io.FileUtils;
 import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
+import org.testng.ITestResult;
+
 import io.cucumber.java.After;
 import io.cucumber.java.Before;
 import io.cucumber.java.Scenario;
@@ -25,10 +26,10 @@ public class Helper extends BasePage{
 		if(scenario.isFailed()) {
 			TakesScreenshot ts = (TakesScreenshot) driver;
 			File src = ts.getScreenshotAs(OutputType.FILE);
-			FileUtils.copyFile(src, new File("./Files/ScreenShot_"+ scenario.getName() +".png"));
+			FileUtils.copyFile(src, new File("./target/ScreenShot_"+ scenario.getName() +".png"));
 		}
 	}
-
+	
 	@After(order = 1)
 	public static void endSetUp() {
 		driver.quit();

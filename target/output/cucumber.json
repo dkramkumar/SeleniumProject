@@ -1,9 +1,9 @@
 [
   {
-    "line": 2,
+    "line": 1,
     "elements": [
       {
-        "start_timestamp": "2022-04-07T03:40:31.222Z",
+        "start_timestamp": "2022-04-20T18:39:09.024Z",
         "before": [
           {
             "result": {
@@ -15,14 +15,14 @@
             }
           }
         ],
-        "line": 105,
-        "name": "File Download - Password Protected Download",
+        "line": 89,
+        "name": "Search Boxes - Search",
         "description": "",
-        "id": "sandbox;file-download---password-protected-download",
+        "id": "sandbox;search-boxes---search",
         "after": [
           {
             "result": {
-              "duration": 6000000,
+              "duration": 274000000,
               "status": "passed"
             },
             "match": {
@@ -31,7 +31,7 @@
           },
           {
             "result": {
-              "duration": 714000000,
+              "duration": 692000000,
               "status": "passed"
             },
             "match": {
@@ -44,10 +44,10 @@
         "steps": [
           {
             "result": {
-              "duration": 5793000000,
+              "duration": 8035000000,
               "status": "passed"
             },
-            "line": 106,
+            "line": 90,
             "name": "User is on sandbox web site",
             "match": {
               "location": "stepDefinations.FormFieldsDef.user_is_on_sandbox_web_site()"
@@ -56,10 +56,10 @@
           },
           {
             "result": {
-              "duration": 1052000000,
+              "duration": 1090000000,
               "status": "passed"
             },
-            "line": 107,
+            "line": 91,
             "name": "User scroll to search boxes button",
             "match": {
               "location": "stepDefinations.SearchBoxesDef.user_scroll_to_search_boxes_button()"
@@ -68,15 +68,15 @@
           },
           {
             "result": {
-              "duration": 4618000000,
+              "duration": 6808000000,
               "status": "passed"
             },
-            "line": 108,
-            "name": "User clicks on \"File Download\" button",
+            "line": 92,
+            "name": "User clicks on \"Search Boxes\" button",
             "match": {
               "arguments": [
                 {
-                  "val": "\"File Download\"",
+                  "val": "\"Search Boxes\"",
                   "offset": 15
                 }
               ],
@@ -86,43 +86,62 @@
           },
           {
             "result": {
-              "duration": 5186000000,
+              "duration": 68000000,
               "status": "passed"
             },
-            "line": 109,
-            "name": "User clicks on download button in Password Protected Download",
-            "match": {
-              "location": "stepDefinations.FileDownloadDef.user_clicks_on_download_button_in_password_protected_download()"
-            },
-            "keyword": "And "
-          },
-          {
-            "result": {
-              "duration": 5549000000,
-              "status": "passed"
-            },
-            "line": 110,
-            "name": "User enters \"automateNow\" password",
+            "line": 93,
+            "name": "User verify \"Search Boxes\" header",
             "match": {
               "arguments": [
                 {
-                  "val": "\"automateNow\"",
+                  "val": "\"Search Boxes\"",
                   "offset": 12
                 }
               ],
-              "location": "stepDefinations.FileDownloadDef.user_enters_password(java.lang.String)"
+              "location": "stepDefinations.SearchBoxesDef.user_verify_header(java.lang.String)"
             },
             "keyword": "And "
           },
           {
             "result": {
-              "duration": 2000000,
+              "duration": 1216000000,
               "status": "passed"
             },
-            "line": 111,
-            "name": "User verify the file is downloaded",
+            "line": 94,
+            "name": "user enters \"Selenium\" in search box",
             "match": {
-              "location": "stepDefinations.FileDownloadDef.user_verify_the_file_is_downloaded()"
+              "arguments": [
+                {
+                  "val": "\"Selenium\"",
+                  "offset": 12
+                }
+              ],
+              "location": "stepDefinations.SearchBoxesDef.user_enters_in_search_box(java.lang.String)"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "duration": 4902000000,
+              "status": "passed"
+            },
+            "line": 95,
+            "name": "User clicks on search button",
+            "match": {
+              "location": "stepDefinations.SearchBoxesDef.user_clicks_on_search_button()"
+            },
+            "keyword": "And "
+          },
+          {
+            "result": {
+              "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:87)\r\n\tat org.junit.Assert.assertTrue(Assert.java:42)\r\n\tat org.junit.Assert.assertTrue(Assert.java:53)\r\n\tat stepDefinations.SearchBoxesDef.user_verify_entry_header(SearchBoxesDef.java:32)\r\n\tat ✽.User verify entry header(file:///D:/WS%20Auto%20Testing/SanboxProject/src/test/resources/Features/Sandbox.feature:96)\r\n",
+              "duration": 51000000,
+              "status": "failed"
+            },
+            "line": 96,
+            "name": "User verify entry header",
+            "match": {
+              "location": "stepDefinations.SearchBoxesDef.user_verify_entry_header()"
             },
             "keyword": "Then "
           }
@@ -130,9 +149,6 @@
         "tags": [
           {
             "name": "@Smoke"
-          },
-          {
-            "name": "@Download"
           }
         ]
       }
@@ -142,15 +158,6 @@
     "id": "sandbox",
     "keyword": "Feature",
     "uri": "file:src/test/resources/Features/Sandbox.feature",
-    "tags": [
-      {
-        "name": "@Smoke",
-        "type": "Tag",
-        "location": {
-          "line": 1,
-          "column": 1
-        }
-      }
-    ]
+    "tags": []
   }
 ]

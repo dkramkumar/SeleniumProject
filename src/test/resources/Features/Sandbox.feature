@@ -1,6 +1,5 @@
-
 Feature: Sandbox
-  @Smoke
+
   Scenario: FormFields
     Given User is on sandbox web site
     When User clicks on "Form Fields" button
@@ -24,14 +23,14 @@ Feature: Sandbox
     And User get the countries by population in sorted table
     And User selects "25" as entries in sortable table
     Then User verify number of rows displayed
-  
+
   Scenario: Calendars - Enter Date
     Given User is on sandbox web site
     When User clicks on "Calendars" button
     And User enters the date "March 24, 2022" in text field
     And User clicks on submit button
     Then User verify the entered date
-  @Calendars
+
   Scenario: Calendars - Select Date
     Given User is on sandbox web site
     When User clicks on "Calendars" button
@@ -56,7 +55,7 @@ Feature: Sandbox
     And User clicks on "confirm" popup
     And User clicks on Cancel button
     Then User verify the text after clicking Cancel button
- 
+
   Scenario: PopUps - Prompt popup
     Given User is on sandbox web site
     When User clicks on "Popups" button
@@ -86,11 +85,12 @@ Feature: Sandbox
     When User clicks on "Hover" button
     And User move to mouse over me button
     Then User get the mouse over out put message
-  @Search
+  @Smoke
   Scenario: Search Boxes - Search
     Given User is on sandbox web site
     When User scroll to search boxes button
     When User clicks on "Search Boxes" button
+    And User verify "Search Boxes" header
     And user enters "Selenium" in search box
     And User clicks on search button
     Then User verify entry header
@@ -101,7 +101,7 @@ Feature: Sandbox
     When User clicks on "File Download" button
     And User clicks on download button in normal download
     And User enters the path to download in window based popup
-  @Download
+
   Scenario: File Download - Password Protected Download
     Given User is on sandbox web site
     When User scroll to search boxes button
@@ -223,7 +223,7 @@ Feature: Sandbox
     Then Verify the "pig" sound "Oink!" text
     And User clicks on "cow" button in click events
     Then Verify the "cow" sound "Moo!" text
-
+  
   Scenario: FormFields - Excel Data
     Given User is on sandbox web site
     When User clicks on "Form Fields" button

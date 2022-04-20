@@ -29,6 +29,12 @@ public class SearchBoxesDef {
 	@Then("User verify entry header")
 	public void user_verify_entry_header() {
 		String header = SearchBoxesPage.getEntryHeader();
-		Assert.assertTrue(header.equals("Search Results for: Selenium"));
+		Assert.assertTrue(header.equals("Search Results for: Seleniu"));
+	}
+	
+	@When("User verify {string} header")
+	public void user_verify_header(String string) {
+		String header = SearchBoxesPage.getHeaderText(string);
+		Assert.assertTrue(header.equals(string));
 	}
 }
